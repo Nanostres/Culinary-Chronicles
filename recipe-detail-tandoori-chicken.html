@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tandoori Chicken | Culinary Chronicles</title>
+<meta name="description" content="Authentic Tandoori Chicken recipe - juicy chicken marinated in yogurt and spices">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: ["class"],
+    theme: {
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: {
+          "2xl": "1400px",
+        },
+      },
+      extend: {
+        colors: {
+          border: "hsl(var(--border))",
+          input: "hsl(var(--input))",
+          ring: "hsl(var(--ring))",
+          background: "hsl(var(--background))",
+          foreground: "hsl(var(--foreground))",
+          primary: {
+            DEFAULT: "#e11d48",
+            foreground: "#ffffff",
+          },
+          secondary: {
+            DEFAULT: "hsl(var(--secondary))",
+            foreground: "hsl(var(--secondary-foreground))",
+          },
+          destructive: {
+            DEFAULT: "hsl(var(--destructive))",
+            foreground: "hsl(var(--destructive-foreground))",
+          },
+          muted: {
+            DEFAULT: "#f3f4f6",
+            foreground: "#6b7280",
+          },
+          accent: {
+            DEFAULT: "hsl(var(--accent))",
+            foreground: "hsl(var(--accent-foreground))",
+          },
+          card: {
+            DEFAULT: "#ffffff",
+            foreground: "#1f2937",
+          },
+        },
+        borderRadius: {
+          lg: "0.5rem",
+          md: "0.375rem",
+          sm: "0.25rem",
+        },
+      },
+    },
+  }
+</script>
+<style>
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 346 77% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 346 77% 50%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 346 77% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 346 77% 50%;
+  }
+
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+</style>
+</head>
+<body class="bg-background text-foreground">
+<div class="flex flex-col min-h-screen">
+  <!-- Header/Navbar -->
+  <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div class="container flex h-16 items-center justify-between">
+      <div class="flex items-center">
+        <a href="index.html" class="text-2xl font-bold mr-8 text-primary">
+          Culinary Chronicles
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Home
+          </a>
+          <a href="recipes.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Recipes
+          </a>
+          <a href="blog.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Blog
+          </a>
+          <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">
+            About
+          </a>
+          <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Contact
+          </a>
+        </nav>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button class="p-2 rounded-md hover:bg-muted" id="theme-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+        </button>
+        <button class="p-2 rounded-md hover:bg-muted">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-muted md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="close-icon" class="hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden border-t hidden">
+      <nav class="flex flex-col space-y-4 p-4">
+        <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Home
+        </a>
+        <a href="recipes.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Recipes
+        </a>
+        <a href="blog.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Blog
+        </a>
+        <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">
+          About
+        </a>
+        <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Contact
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <div class="container mx-auto py-8 px-4">
+      <!-- Breadcrumbs -->
+      <nav class="flex mb-6 text-sm">
+        <ol class="flex items-center space-x-2">
+          <li>
+            <a href="index.html" class="text-muted-foreground hover:text-primary">Home</a>
+          </li>
+          <li class="flex items-center space-x-2">
+            <span class="text-muted-foreground">/</span>
+            <a href="recipes.html" class="text-muted-foreground hover:text-primary">Recipes</a>
+          </li>
+          <li class="flex items-center space-x-2">
+            <span class="text-muted-foreground">/</span>
+            <a href="recipes.html?category=north-indian" class="text-muted-foreground hover:text-primary">North Indian</a>
+          </li>
+          <li class="flex items-center space-x-2">
+            <span class="text-muted-foreground">/</span>
+            <span class="font-medium">Tandoori Chicken</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Recipe Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Tandoori Chicken</h1>
+        <p class="text-xl text-muted-foreground mb-6">
+          A classic North Indian dish featuring chicken marinated in yogurt and aromatic spices, then roasted to perfection for a smoky, flavorful experience.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="flex items-center text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Prep Time: 4 hours (including marination)</span>
+          </div>
+          <div class="flex items-center text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M21 8h-3a2 2 0 0 1-2-2V3"></path><path d="M3 16h3a2 2 0 0 1 2 2v3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg>
+            <span>Cook Time: 30 mins</span>
+          </div>
+          <div class="flex items-center text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            <span>Servings: 4</span>
+          </div>
+          <div class="flex items-center text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+            <span>Difficulty: Medium</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+          <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">Non-Vegetarian</span>
+          <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">Chicken</span>
+          <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">Grilled</span>
+        </div>
+      </div>
+
+      <!-- Recipe Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <!-- Recipe Image -->
+        <div class="lg:col-span-2">
+          <div class="rounded-lg overflow-hidden mb-8">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tandoori%20chicken.jpg-z6Gg5HmszsIILQtlwdo6ASxNDbCPE5.jpeg" alt="Tandoori Chicken - Marinated and grilled to perfection" class="w-full h-auto" />
+          </div>
+
+          <!-- Tabs -->
+          <div class="mb-6 border-b">
+            <div class="flex space-x-6">
+              <button class="tab-button py-3 border-b-2 border-primary font-medium text-primary" data-tab="ingredients">Ingredients</button>
+              <button class="tab-button py-3 border-b-2 border-transparent font-medium text-muted-foreground hover:text-foreground" data-tab="instructions">Instructions</button>
+              <button class="tab-button py-3 border-b-2 border-transparent font-medium text-muted-foreground hover:text-foreground" data-tab="notes">Notes & Tips</button>
+            </div>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="tab-content active" id="ingredients-content">
+            <h2 class="text-2xl font-bold mb-4">Ingredients</h2>
+            
+            <h3 class="text-xl font-semibold mb-2">For the Chicken:</h3>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>8 chicken drumsticks or 4 leg quarters (skin removed)</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 tablespoon lemon juice</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 teaspoon salt</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>2-3 slits cut into each piece of chicken</span>
+              </li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-2">For the First Marinade:</h3>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>2 tablespoons ginger-garlic paste</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 tablespoon lemon juice</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 teaspoon salt</span>
+              </li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-2">For the Second Marinade:</h3>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 cup thick yogurt (hung curd or Greek yogurt)</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>2 tablespoons mustard oil (or vegetable oil)</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>2 tablespoons Kashmiri red chili powder (for color and mild heat)</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 teaspoon regular red chili powder (adjust to taste)</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 teaspoon turmeric powder</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 tablespoon coriander powder</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 teaspoon cumin powder</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 teaspoon garam masala</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>1 teaspoon dried fenugreek leaves (kasuri methi), crushed</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path  class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>Salt to taste</span>
+              </li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-2">For Basting:</h3>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>2 tablespoons melted butter or ghee</span>
+              </li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-2">For Serving:</h3>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>Lemon wedges</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>Sliced onion rings</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>Fresh mint chutney</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-content" id="instructions-content">
+            <h2 class="text-2xl font-bold mb-4">Instructions</h2>
+            
+            <h3 class="text-xl font-semibold mb-2">Preparation:</h3>
+            <ol class="space-y-4 mb-6">
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">1</span>
+                <p>Clean the chicken pieces and pat them dry with paper towels. Make 2-3 deep cuts on each piece to help the marinade penetrate.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">2</span>
+                <p>Rub the chicken with lemon juice and salt. Set aside for 15 minutes.</p>
+              </li>
+            </ol>
+
+            <h3 class="text-xl font-semibold mb-2">First Marinade:</h3>
+            <ol class="space-y-4 mb-6">
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">3</span>
+                <p>Mix the ginger-garlic paste, lemon juice, and salt in a bowl.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">4</span>
+                <p>Apply this mixture to the chicken pieces, making sure to rub it into the cuts. Let it marinate for 30 minutes.</p>
+              </li>
+            </ol>
+
+            <h3 class="text-xl font-semibold mb-2">Second Marinade:</h3>
+            <ol class="space-y-4 mb-6">
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">5</span>
+                <p>In a large bowl, whisk the yogurt until smooth. Add all the spices and oil, mixing well to form a thick, smooth paste.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">6</span>
+                <p>Add the chicken pieces to this marinade, coating each piece thoroughly. Make sure the marinade gets into the cuts.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">7</span>
+                <p>Cover and refrigerate for at least 3-4 hours, preferably overnight for the best flavor.</p>
+              </li>
+            </ol>
+
+            <h3 class="text-xl font-semibold mb-2">Cooking:</h3>
+            <ol class="space-y-4 mb-6">
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">8</span>
+                <p>Remove the marinated chicken from the refrigerator and let it come to room temperature (about 30 minutes).</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">9</span>
+                <p>Preheat your oven to 450°F (230°C). If using a tandoor or grill, prepare it according to manufacturer's instructions.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">10</span>
+                <p>For oven cooking: Place the chicken pieces on a wire rack set over a baking tray (to catch drippings). Bake for 15 minutes.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">11</span>
+                <p>Flip the chicken pieces, baste with melted butter or ghee, and cook for another 10-15 minutes until the chicken is cooked through and slightly charred on the edges.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">12</span>
+                <p>For grill cooking: Grill the chicken over medium-high heat, turning occasionally and basting with butter, until cooked through and charred in spots (about 20-25 minutes total).</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">13</span>
+                <p>To check doneness, pierce the thickest part of a chicken piece - the juices should run clear, not pink.</p>
+              </li>
+            </ol>
+
+            <h3 class="text-xl font-semibold mb-2">Serving:</h3>
+            <ol class="space-y-4 mb-6">
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">14</span>
+                <p>Transfer the tandoori chicken to a serving platter. Baste once more with melted butter.</p>
+              </li>
+              <li class="flex">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">15</span>
+                <p>Garnish with lemon wedges and sliced onion rings. Serve hot with mint chutney on the side.</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="tab-content" id="notes-content">
+            <h2 class="text-2xl font-bold mb-4">Notes & Tips</h2>
+            <div class="space-y-4 mb-6">
+              <div class="bg-muted/30 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">Marination Time</h3>
+                <p>The longer you marinate the chicken, the more flavorful it will be. While 3-4 hours is sufficient, overnight marination (8-12 hours) yields the best results.</p>
+              </div>
+              <div class="bg-muted/30 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">Yogurt Selection</h3>
+                <p>Use thick yogurt (Greek yogurt or hung curd) to ensure the marinade sticks to the chicken. Regular yogurt may be too watery and can dilute the flavors.</p>
+              </div>
+              <div class="bg-muted/30 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">Achieving the Red Color</h3>
+                <p>The vibrant red color comes from Kashmiri red chili powder, which provides color without excessive heat. If unavailable, substitute with a mix of regular chili powder and a drop of red food coloring.</p>
+              </div>
+              <div class="bg-muted/30 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">Cooking Methods</h3>
+                <p>While a traditional clay tandoor gives the most authentic flavor, you can achieve excellent results with a regular oven, grill, or even an air fryer. For the smoky flavor, you can add a piece of hot charcoal in a small metal bowl placed among the cooked chicken pieces, drizzle a few drops of ghee on the charcoal, and cover immediately for 5 minutes.</p>
+              </div>
+              <div class="bg-muted/30 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">Serving Suggestions</h3>
+                <p>Tandoori chicken pairs wonderfully with mint chutney, sliced onions, and lemon wedges. It can be served as an appetizer or as a main course with naan bread or rice. For a complete meal, serve with a side of raita (yogurt with cucumber) and a fresh salad.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <!-- Recipe Info Card -->
+          <div class="bg-card rounded-lg shadow-sm p-6 mb-6">
+            <h3 class="text-lg font-bold mb-4">Recipe Overview</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-muted-foreground">Cuisine:</span>
+                <span class="font-medium">North Indian</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted-foreground">Course:</span>
+                <span class="font-medium">Main/Appetizer</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted-foreground">Diet:</span>
+                <span class="font-medium">Non-Vegetarian</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted-foreground">Calories:</span>
+                <span class="font-medium">~320 per serving</span>
+              </div>
+              <div class="border-t pt-3 mt-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-muted-foreground">Rating:</span>
+                  <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </div>
+                </div>
+                <p class="text-sm text-muted-foreground mt-1">(142 reviews)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Author Card -->
+          <div class="bg-card rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=100&auto=format&fit=crop" alt="Fara" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h3 class="font-bold">Recipe by Fara</h3>
+                <p class="text-sm text-muted-foreground">Published March 12, 2024</p>
+              </div>
+            </div>
+            <p class="text-sm mb-4">
+              This Tandoori Chicken recipe has been in my family for generations. The key is in the double marinade process and the blend of spices that gives it that authentic flavor.
+            </p>
+            <a href="about.html" class="text-sm text-primary hover:underline">Read more about Fara</a>
+          </div>
+
+          <!-- Share & Save -->
+          <div class="bg-card rounded-lg shadow-sm p-6 mb-6">
+            <h3 class="text-lg font-bold mb-4">Share & Save</h3>
+            <div class="flex space-x-3 mb-4">
+              <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </button>
+              <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+              </button>
+              <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              </button>
+              <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+              </button>
+            </div>
+            <div class="flex space-x-2">
+              <button class="flex-1 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                Print
+              </button>
+              <button class="flex-1 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Recipes -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">More North Indian Recipes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Recipe Card 1 -->
+          <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+            <a href="recipe-detail.html" class="block">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dal%20makhani.jpg-pT9S7jrYNSfQPTApFTfZ4jE3B767Lt.jpeg" alt="Dal Makhani" class="w-full h-48 object-cover" />
+              <div class="p-4">
+                <h3 class="font-bold mb-2">Dal Makhani</h3>
+                <p class="text-sm text-muted-foreground mb-3">Creamy black lentils slow cooked with spices, butter and cream.</p>
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>5 hours</span>
+                  </div>
+                  <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Recipe Card 2 -->
+          <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+            <a href="recipe-detail-chole-bhature.html" class="block">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chole%20bhature.jpg-ztWpZJGbwYV3mUIzzLcacfNG4vvbf2.jpeg" alt="Chole Bhature" class="w-full h-48 object-cover" />
+              <div class="p-4">
+                <h3 class="font-bold mb-2">Chole Bhature</h3>
+                <p class="text-sm text-muted-foreground mb-3">Spicy chickpea curry served with fluffy, deep-fried bread.</p>
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>45 mins</span>
+                  </div>
+                  <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Recipe Card 3 -->
+          <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+            <a href="recipe-detail-aloo-paratha.html" class="block">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Aloo%20paratha.jpg-ys68oV47r0eik9obFmg2CM2nQyXN06.jpeg" alt="Aloo Paratha" class="w-full h-48 object-cover" />
+              <div class="p-4">
+                <h3 class="font-bold mb-2">Aloo Paratha</h3>
+                <p class="text-sm text-muted-foreground mb-3">Whole wheat flatbread stuffed with spiced potato filling.</p>
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>40 mins</span>
+                  </div>
+                  <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Recipe Card 4 -->
+          <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+            <a href="recipe-detail-malai-kofta.html" class="block">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Malai%20Kofta.jpg-qNUNEgvlhm9cD6E2tCVn8X4BKDuLCs.jpeg" alt="Malai Kofta" class="w-full h-48 object-cover" />
+              <div class="p-4">
+                <h3 class="font-bold mb-2">Malai Kofta</h3>
+                <p class="text-sm text-muted-foreground mb-3">Fried potato and paneer balls in a creamy tomato sauce.</p>
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>50 mins</span>
+                  </div>
+                  <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comments Section -->
+      <section>
+        <h2 class="text-2xl font-bold mb-6">Comments (10)</h2>
+        <div class="space-y-6 mb-8">
+          <!-- Comment 1 -->
+          <div class="bg-card rounded-lg shadow-sm p-6">
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full overflow-hidden mr-4">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop" alt="User" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between mb-2">
+                  <div>
+                    <h4 class="font-bold">Rajiv Mehta</h4>
+                    <p class="text-sm text-muted-foreground">March 5, 2024</p>
+                  </div>
+                  <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </div>
+                </div>
+                <p class="mb-2">This tandoori chicken recipe is absolutely perfect! The double marinade really makes a difference. I used my outdoor grill and the chicken came out juicy with that authentic smoky flavor. My family couldn't get enough!</p>
+                <button class="text-sm text-primary hover:underline">Reply</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment 2 -->
+          <div class="bg-card rounded-lg shadow-sm p-6">
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full overflow-hidden mr-4">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" alt="User" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between mb-2">
+                  <div>
+                    <h4 class="font-bold">Anita Gupta</h4>
+                    <p class="text-sm text-muted-foreground">February 28, 2024</p>
+                  </div>
+                  <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </div>
+                </div>
+                <p class="mb-2">I made this in my oven and it turned out great! I added a bit more Kashmiri chili powder for a deeper red color. The tip about using the charcoal for smokiness really helped give it that authentic tandoor flavor.</p>
+                <button class="text-sm text-primary hover:underline">Reply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comment Form -->
+        <div class="bg-card rounded-lg shadow-sm p-6">
+          <h3 class="text-xl font-bold mb-4">Leave a Comment</h3>
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="comment-name" class="block text-sm font-medium mb-1">
+                  Your Name
+                </label>
+                <input 
+                  type="text" 
+                  id="comment-name" 
+                  name="comment-name" 
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  required 
+                />
+              </div>
+              <div>
+                <label for="comment-email" class="block text-sm font-medium mb-1">
+                  Email Address
+                </label>
+                <input 
+                  type="email" 
+                  id="comment-email" 
+                  name="comment-email" 
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  required 
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="rating" class="block text-sm font-medium mb-1">
+                Your Rating
+              </label>
+              <div class="flex space-x-1">
+                <button type="button" class="text-muted-foreground hover:text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </button>
+                <button type="button" class="text-muted-foreground hover:text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </button>
+                <button type="button" class="text-muted-foreground hover:text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </button>
+                <button type="button" class="text-muted-foreground hover:text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </button>
+                <button type="button" class="text-muted-foreground hover:text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label for="comment-text" class="block text-sm font-medium mb-1">
+                Your Comment
+              </label>
+              <textarea
+                id="comment-text"
+                name="comment-text"
+                rows="4"
+                class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                required
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            >
+              Post Comment
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-muted py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">Culinary Chronicles</h3>
+          <p class="text-muted-foreground mb-4">
+            Exploring flavors, sharing stories, and creating memories through Indian food.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-muted-foreground hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold mb-4">Explore</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="recipes.html" class="text-muted-foreground hover:text-primary">
+                Recipes
+              </a>
+            </li>
+            <li>
+              <a href="blog.html" class="text-muted-foreground hover:text-primary">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="about.html" class="text-muted-foreground hover:text-primary">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="contact.html" class="text-muted-foreground hover:text-primary">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold mb-4">Categories</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="recipes.html?category=north-indian" class="text-muted-foreground hover:text-primary">
+                North Indian
+              </a>
+            </li>
+            <li>
+              <a href="recipes.html?category=south-indian" class="text-muted-foreground hover:text-primary">
+                South Indian
+              </a>
+            </li>
+            <li>
+              <a href="recipes.html?category=desserts" class="text-muted-foreground hover:text-primary">
+                Desserts
+              </a>
+            </li>
+            <li>
+              <a href="recipes.html?category=vegetarian" class="text-muted-foreground hover:text-primary">
+                Vegetarian
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t mt-12 pt-6 text-center text-muted-foreground text-sm">
+        <p>© 2024 Culinary Chronicles. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  // Check for dark mode preference
+  if (localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+
+  // Toggle theme
+  themeToggle.addEventListener('click', () => {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  // Tabs functionality
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons and contents
+      tabButtons.forEach(btn => {
+        btn.classList.remove('border-primary', 'text-primary');
+        btn.classList.add('border-transparent', 'text-muted-foreground');
+      });
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+      });
+
+      // Add active class to clicked button and corresponding content
+      button.classList.add('border-primary', 'text-primary');
+      button.classList.remove('border-transparent', 'text-muted-foreground');
+      const tabId = button.getAttribute('data-tab');
+      document.getElementById(`${tabId}-content`).classList.add('active');
+    });
+  });
+
+  // Rating stars functionality
+  const ratingButtons = document.querySelectorAll('[for="rating"] + div button');
+  
+  ratingButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      // Reset all stars
+      ratingButtons.forEach(btn => {
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
+        btn.classList.remove('text-primary');
+        btn.classList.add('text-muted-foreground');
+      });
+      
+      // Fill stars up to the clicked one
+      for (let i = 0; i <= index; i++) {
+        ratingButtons[i].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
+        ratingButtons[i].classList.remove('text-muted-foreground');
+        ratingButtons[i].classList.add('text-primary');
+      }
+    });
+  });
+</script>
+</body>
+</html>

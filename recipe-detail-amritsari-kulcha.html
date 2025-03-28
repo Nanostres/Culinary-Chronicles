@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amritsari Kulcha | Culinary Chronicles</title>
+<meta name="description" content="Authentic Amritsari Kulcha recipe - leavened bread stuffed with spiced filling and baked to perfection">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: ["class"],
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "#e11d48",
+          foreground: "#ffffff",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "#f3f4f6",
+          foreground: "#6b7280",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        card: {
+          DEFAULT: "#ffffff",
+          foreground: "#1f2937",
+        },
+      },
+      borderRadius: {
+        lg: "0.5rem",
+        md: "0.375rem",
+        sm: "0.25rem",
+      },
+    },
+  },
+}
+</script>
+<style>
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 346 77% 50%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 346 77% 50%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 346 77% 50%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 346 77% 50%;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+</style>
+</head>
+<body class="bg-background text-foreground">
+<div class="flex flex-col min-h-screen">
+<!-- Header/Navbar -->
+<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container flex h-16 items-center justify-between">
+    <div class="flex items-center">
+      <a href="index.html" class="text-2xl font-bold mr-8 text-primary">
+        Culinary Chronicles
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Home
+        </a>
+        <a href="recipes.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Recipes
+        </a>
+        <a href="blog.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Blog
+        </a>
+        <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">
+          About
+        </a>
+        <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">
+          Contact
+        </a>
+      </nav>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <button class="p-2 rounded-md hover:bg-muted" id="theme-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><circle cx="12" cy="  stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      </button>
+      <button class="p-2 rounded-md hover:bg-muted">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-muted md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="close-icon" class="hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div id="mobile-menu" class="md:hidden border-t hidden">
+    <nav class="flex flex-col space-y-4 p-4">
+      <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">
+        Home
+      </a>
+      <a href="recipes.html" class="text-sm font-medium hover:text-primary transition-colors">
+        Recipes
+      </a>
+      <a href="blog.html" class="text-sm font-medium hover:text-primary transition-colors">
+        Blog
+      </a>
+      <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">
+        About
+      </a>
+      <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">
+        Contact
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-grow">
+  <div class="container mx-auto py-8 px-4">
+    <!-- Breadcrumbs -->
+    <nav class="flex mb-6 text-sm">
+      <ol class="flex items-center space-x-2">
+        <li>
+          <a href="index.html" class="text-muted-foreground hover:text-primary">Home</a>
+        </li>
+        <li class="flex items-center space-x-2">
+          <span class="text-muted-foreground">/</span>
+          <a href="recipes.html" class="text-muted-foreground hover:text-primary">Recipes</a>
+        </li>
+        <li class="flex items-center space-x-2">
+          <span class="text-muted-foreground">/</span>
+          <a href="recipes.html?category=north-indian" class="text-muted-foreground hover:text-primary">North Indian</a>
+        </li>
+        <li class="flex items-center space-x-2">
+          <span class="text-muted-foreground">/</span>
+          <span class="font-medium">Amritsari Kulcha</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Recipe Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold mb-4">Amritsari Kulcha</h1>
+      <p class="text-xl text-muted-foreground mb-6">
+        A famous North Indian leavened bread stuffed with a spiced potato or paneer filling, traditionally baked in a tandoor and served with chole (chickpea curry) and butter.
+      </p>
+      
+      <div class="flex flex-wrap gap-4 mb-6">
+        <div class="flex items-center text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Prep Time: 2 hours (including resting)</span>
+        </div>
+        <div class="flex items-center text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M21 8h-3a2 2 0 0 1-2-2V3"></path><path d="M3 16h3a2 2 0 0 1 2 2v3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg>
+          <span>Cook Time: 15 mins</span>
+        </div>
+        <div class="flex items-center text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+          <span>Servings: 6 kulchas</span>
+        </div>
+        <div class="flex items-center text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+          <span>Difficulty: Medium</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+        <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">Vegetarian</span>
+        <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">Breakfast</span>
+        <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">Punjabi</span>
+      </div>
+    </div>
+
+    <!-- Recipe Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Recipe Image -->
+      <div class="lg:col-span-2">
+        <div class="rounded-lg overflow-hidden mb-8">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/indian%20breakfasts.jpg-gsCT2OF7Q99YXmRqLtll8pXC3mKm7V.jpeg" alt="Amritsari Kulcha - Stuffed leavened bread" class="w-full h-auto" />
+        </div>
+
+        <!-- Tabs -->
+        <div class="mb-6 border-b">
+          <div class="flex space-x-6">
+            <button class="tab-button py-3 border-b-2 border-primary font-medium text-primary" data-tab="ingredients">Ingredients</button>
+            <button class="tab-button py-3 border-b-2 border-transparent font-medium text-muted-foreground hover:text-foreground" data-tab="instructions">Instructions</button>
+            <button class="tab-button py-3 border-b-2 border-transparent font-medium text-muted-foreground hover:text-foreground" data-tab="notes">Notes & Tips</button>
+          </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content active" id="ingredients-content">
+          <h2 class="text-2xl font-bold mb-4">Ingredients</h2>
+          
+          <h3 class="text-xl font-semibold mb-2">For the Dough:</h3>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>3 cups all-purpose flour (maida)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1/2 teaspoon baking powder</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1/4 teaspoon baking soda</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1 teaspoon salt</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>2 tablespoons yogurt</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>2 tablespoons oil or ghee, plus more for brushing</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1 cup warm water (approximately)</span>
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mb-2">For the Potato Filling:</h3>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>3 medium potatoes, boiled, peeled and mashed</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1 medium onion, finely chopped</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>2 green chilies, finely chopped</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1/4 cup fresh coriander leaves, chopped</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1 teaspoon cumin seeds</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1 teaspoon garam masala</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1/2 teaspoon red chili powder</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>1/2 teaspoon dried mango powder (amchur)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Salt to taste</span>
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mb-2">For Topping:</h3>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>2 tablespoons butter, melted</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>2 tablespoons nigella seeds (kalonji)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>2 tablespoons fresh coriander leaves, finely chopped</span>
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mb-2">For Serving:</h3>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Butter for serving</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Chole (chickpea curry)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Sliced onions</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1 text-primary"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Lemon wedges</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="instructions-content">
+          <h2 class="text-2xl font-bold mb-4">Instructions</h2>
+          
+          <h3 class="text-xl font-semibold mb-2">Prepare the Dough:</h3>
+          <ol class="space-y-4 mb-6">
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">1</span>
+              <p>In a large mixing bowl, combine the all-purpose flour, baking powder, baking soda, and salt. Mix well.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">2</span>
+              <p>Add the yogurt and oil to the flour mixture. Mix well with your fingertips until the mixture resembles breadcrumbs.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">3</span>
+              <p>Gradually add warm water and knead to form a soft, smooth dough. The dough should be slightly softer than regular roti dough.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">4</span>
+              <p>Cover the dough with a damp cloth and let it rest for at least 1-2 hours. This resting period is crucial for the dough to ferment slightly, which gives kulcha its characteristic texture.</p>
+            </li>
+          </ol>
+
+          <h3 class="text-xl font-semibold mb-2">Prepare the Potato Filling:</h3>
+          <ol class="space-y-4 mb-6">
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">5</span>
+              <p>In a mixing bowl, add the mashed potatoes. Make sure there are no lumps.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">6</span>
+              <p>Add the chopped onions, green chilies, fresh coriander leaves, cumin seeds, garam masala, red chili powder, dried mango powder, and salt to the mashed potatoes.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">7</span>
+              <p>Mix everything well until all the ingredients are evenly incorporated. Taste and adjust seasonings if needed.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">8</span>
+              <p>Divide the potato mixture into 6 equal portions and shape them into balls.</p>
+            </li>
+          </ol>
+
+          <h3 class="text-xl font-semibold mb-2">Assemble and Cook the Kulchas:</h3>
+          <ol class="space-y-4 mb-6">
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">9</span>
+              <p>After the dough has rested, divide it into 6 equal portions and shape them into balls.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">10</span>
+              <p>Take one dough ball, flatten it slightly with your palm, and dust it with flour.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">11</span>
+              <p>Using a rolling pin, roll it out into a circle about 5-6 inches in diameter.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">12</span>
+              <p>Place one portion of the potato filling in the center of the rolled dough.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">13</span>
+              <p>Bring the edges of the dough to the center, covering the filling completely. Pinch the edges to seal.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">14</span>
+              <p>Flatten the stuffed ball gently with your palm. Dust it with flour.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">15</span>
+              <p>Carefully roll it out into an oval or round shape about 7-8 inches in diameter, applying gentle, even pressure.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">16</span>
+              <p>Brush the top with water and sprinkle some nigella seeds and chopped coriander leaves. Press them gently into the dough.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">17</span>
+              <p>Heat a tawa (flat griddle) or a non-stick pan over medium-high heat.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">18</span>
+              <p>Place the kulcha on the hot tawa with the seeded side facing up.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">19</span>
+              <p>Cook for about 1-2 minutes until small bubbles start to appear on the surface.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">20</span>
+              <p>Flip the kulcha and apply some butter on the cooked side.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">21</span>
+              <p>Cook for another 1-2 minutes until both sides are golden brown with some charred spots.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">22</span>
+              <p>For a tandoor-like effect, you can flip the kulcha and place it directly on an open flame for a few seconds to get charred spots (be careful and use tongs).</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">23</span>
+              <p>Remove from heat and brush with more butter.</p>
+            </li>
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">24</span>
+              <p>Repeat the process with the remaining dough and filling.</p>
+            </li>
+          </ol>
+
+          <h3 class="text-xl font-semibold mb-2">Serving:</h3>
+          <ol class="space-y-4 mb-6">
+            <li class="flex">
+              <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold mr-3">25</span>
+              <p>Serve hot Amritsari Kulchas with chole (chickpea curry), a dollop of butter, sliced onions, and lemon wedges.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="tab-content" id="notes-content">
+          <h2 class="text-2xl font-bold mb-4">Notes & Tips</h2>
+          <div class="space-y-4 mb-6">
+            <div class="bg-muted/30 p-4 rounded-lg">
+              <h3 class="font-bold mb-2">Dough Fermentation</h3>
+              <p>The key to authentic Amritsari Kulcha is the slight fermentation of the dough. Don't skip the resting time of 1-2 hours. For even better results, you can prepare the dough the night before and let it ferment in the refrigerator overnight.</p>
+            </div>
+            <div class="bg-muted/30 p-4 rounded-lg">
+              <h3 class="font-bold mb-2">Filling Variations</h3>
+              <p>While potato filling is traditional, you can also try other fillings like paneer (Indian cottage cheese), a mixture of grated cauliflower and potatoes, or even minced meat for non-vegetarians. Each filling should be well-seasoned with spices to complement the bread.</p>
+            </div>
+            <div class="bg-muted/30 p-4 rounded-lg">
+              <h3 class="font-bold mb-2">Cooking Methods</h3>
+              <p>Traditionally, kulchas are cooked in a tandoor (clay oven), but a tawa (flat griddle) or non-stick pan works well for home cooking. For the authentic charred spots, you can briefly place the cooked kulcha directly on an open flame using tongs, or use a kitchen torch if available.</p>
+            </div>
+            <div class="bg-muted/30 p-4 rounded-lg">
+              <h3 class="font-bold mb-2">Serving Suggestions</h3>
+              <p>Amritsari Kulcha is traditionally served with chole (spiced chickpea curry), but it also pairs well with other curries, dal, or even just butter and pickle. In Amritsar, it's often served with a special tamarind chutney and onions.</p>
+            </div>
+            <div class="bg-muted/30 p-4 rounded-lg">
+              <h3 class="font-bold mb-2">Storage Tips</h3>
+              <p>Kulchas are best enjoyed fresh, but if you need to store them, place them in an airtight container with paper towels between each kulcha to absorb moisture. They can be refrigerated for 1-2 days. Reheat on a tawa or in a microwave wrapped in a damp paper towel to prevent drying out.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1">
+        <!-- Recipe Info Card -->
+        <div class="bg-card rounded-lg shadow-sm p-6 mb-6">
+          <h3 class="text-lg font-bold mb-4">Recipe Overview</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between">
+              <span class="text-muted-foreground">Cuisine:</span>
+              <span class="font-medium">North Indian</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-muted-foreground">Course:</span>
+              <span class="font-medium">Breakfast/Main</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-muted-foreground">Diet:</span>
+              <span class="font-medium">Vegetarian</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-muted-foreground">Calories:</span>
+              <span class="font-medium">~280 per kulcha</span>
+            </div>
+            <div class="border-t pt-3 mt-3">
+              <div class="flex justify-between items-center">
+                <span class="text-muted-foreground">Rating:</span>
+                <div class="flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+              </div>
+              <p class="text-sm text-muted-foreground mt-1">(138 reviews)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Author Card -->
+        <div class="bg-card rounded-lg shadow-sm p-6 mb-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=100&auto=format&fit=crop" alt="Fara" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 class="font-bold">Recipe by Fara</h3>
+              <p class="text-sm text-muted-foreground">Published March 5, 2024</p>
+            </div>
+          </div>
+          <p class="text-sm mb-4">
+            This Amritsari Kulcha recipe is inspired by my travels to Punjab. The secret is in the fermentation of the dough and the perfect balance of spices in the filling.
+          </p>
+          <a href="about.html" class="text-sm text-primary hover:underline">Read more about Fara</a>
+        </div>
+
+        <!-- Share & Save -->
+        <div class="bg-card rounded-lg shadow-sm p-6 mb-6">
+          <h3 class="text-lg font-bold mb-4">Share & Save</h3>
+          <div class="flex space-x-3 mb-4">
+            <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+            </button>
+          </div>
+          <div class="flex space-x-2">
+            <button class="flex-1 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+              Print
+            </button>
+            <button class="flex-1 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Recipes -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">More North Indian Recipes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Recipe Card 1 -->
+        <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+          <a href="recipe-detail.html" class="block">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dal%20makhani.jpg-pT9S7jrYNSfQPTApFTfZ4jE3B767Lt.jpeg" alt="Dal Makhani" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Dal Makhani</h3>
+              <p class="text-sm text-muted-foreground mb-3">Creamy black lentils slow cooked with spices, butter and cream.</p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>5 hours</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Recipe Card 2 -->
+        <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+          <a href="recipe-detail-chole-bhature.html" class="block">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chole%20bhature.jpg-ztWpZJGbwYV3mUIzzLcacfNG4vvbf2.jpeg" alt="Chole Bhature" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Chole Bhature</h3>
+              <p class="text-sm text-muted-foreground mb-3">Spicy chickpea curry served with fluffy, deep-fried bread.</p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>45 mins</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Recipe Card 3 -->
+        <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+          <a href="recipe-detail-tandoori-chicken.html" class="block">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tandoori%20chicken.jpg-z6Gg5HmszsIILQtlwdo6ASxNDbCPE5.jpeg" alt="Tandoori Chicken" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Tandoori Chicken</h3>
+              <p class="text-sm text-muted-foreground mb-3">Chicken marinated in yogurt and spices, roasted to perfection.</p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>4.5 hours</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Recipe Card 4 -->
+        <div class="bg-card rounded-lg shadow-sm overflow-hidden">
+          <a href="recipe-detail-aloo-paratha.html" class="block">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/indian%20breakfasts.jpg-gsCT2OF7Q99YXmRqLtll8pXC3mKm7V.jpeg" alt="Aloo Paratha" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Aloo Paratha</h3>
+              <p class="text-sm text-muted-foreground mb-3">Whole wheat flatbread stuffed with spiced potato filling.</p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>50 mins</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary/10 text-primary">North Indian</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section>
+      <h2 class="text-2xl font-bold mb-6">Comments (7)</h2>
+      <div class="space-y-6 mb-8">
+        <!-- Comment 1 -->
+        <div class="bg-card rounded-lg shadow-sm p-6">
+          <div class="flex items-start">
+            <div class="w-10 h-10 rounded-full overflow-hidden mr-4">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="User" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between mb-2">
+                <div>
+                  <h4 class="font-bold">Vikram Singh</h4>
+                  <p class="text-sm text-muted-foreground">February 28, 2024</p>
+                </div>
+                <div class="flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.
