@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Culinary Chronicles</title>
+  <meta name="description" content="Discover the story behind our passion for Indian food">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ["class"],
+      theme: {
+        container: {
+          center: true,
+          padding: "2rem",
+          screens: {
+            "2xl": "1400px",
+          },
+        },
+        extend: {
+          colors: {
+            border: "hsl(var(--border))",
+            input: "hsl(var(--input))",
+            ring: "hsl(var(--ring))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            primary: {
+              DEFAULT: "#e11d48",
+              foreground: "#ffffff",
+            },
+            secondary: {
+              DEFAULT: "hsl(var(--secondary))",
+              foreground: "hsl(var(--secondary-foreground))",
+            },
+            destructive: {
+              DEFAULT: "hsl(var(--destructive))",
+              foreground: "hsl(var(--destructive-foreground))",
+            },
+            muted: {
+              DEFAULT: "#f3f4f6",
+              foreground: "#6b7280",
+            },
+            accent: {
+              DEFAULT: "hsl(var(--accent))",
+              foreground: "hsl(var(--accent-foreground))",
+            },
+            card: {
+              DEFAULT: "#ffffff",
+              foreground: "#1f2937",
+            },
+          },
+          borderRadius: {
+            lg: "0.5rem",
+            md: "0.375rem",
+            sm: "0.25rem",
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+      --primary: 346 77% 50%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 346 77% 50%;
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
+      --primary: 346 77% 50%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 346 77% 50%;
+    }
+  </style>
+</head>
+<body class="bg-background text-foreground">
+  <div class="flex flex-col min-h-screen">
+    <!-- Header/Navbar -->
+    <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div class="container flex h-16 items-center justify-between">
+        <div class="flex items-center">
+          <a href="index.html" class="text-2xl font-bold mr-8 text-primary">
+            Culinary Chronicles
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">
+              Home
+            </a>
+            <a href="recipes.html" class="text-sm font-medium hover:text-primary transition-colors">
+              Recipes
+            </a>
+            <a href="blog.html" class="text-sm font-medium hover:text-primary transition-colors">
+              Blog
+            </a>
+            <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">
+              About
+            </a>
+            <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">
+              Contact
+            </a>
+          </nav>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button class="p-2 rounded-md hover:bg-muted" id="theme-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          </button>
+          <button class="p-2 rounded-md hover:bg-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-muted md:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="close-icon" class="hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="md:hidden border-t hidden">
+        <nav class="flex flex-col space-y-4 p-4">
+          <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Home
+          </a>
+          <a href="recipes.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Recipes
+          </a>
+          <a href="blog.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Blog
+          </a>
+          <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">
+            About
+          </a>
+          <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">
+            Contact
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-grow">
+      <div class="container mx-auto py-12 px-4">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+          <h1 class="text-4xl font-bold mb-4">About Culinary Chronicles</h1>
+          <p class="text-muted-foreground max-w-2xl mx-auto">
+            Discover the story behind our passion for Indian food and the journey that led us to create this culinary community.
+          </p>
+        </section>
+
+        <!-- Our Story -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <h2 class="text-3xl font-bold mb-4">Our Story</h2>
+            <p class="mb-4">
+              Culinary Chronicles began in early 2024 when my mother, Fara, started creating delicious Indian dishes that captivated everyone who tasted them. What started as a way to preserve our family recipes quickly grew into a passion for sharing authentic Indian cuisine with food lovers around the world.
+            </p>
+            <p class="mb-4">
+              My mother's incredible talent for balancing spices and flavors, passed down through generations, became the foundation of this blog. Her dedication to preserving traditional techniques while experimenting with modern twists has created a unique collection of recipes that honor our Indian heritage.
+            </p>
+            <p>
+              Today, Culinary Chronicles features a growing collection of tested recipes, cooking guides, and food stories that celebrate the rich diversity of Indian cuisine. From North to South, we explore regional specialties and share the cultural stories behind each dish.
+            </p>
+          </div>
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1596797038530-2c107aa8e1fa?q=80&w=600&auto=format&fit=crop" alt="Indian spices and ingredients" class="w-full h-auto" />
+          </div>
+        </section>
+
+        <!-- Our Mission -->
+        <section class="mb-16 bg-muted/50 py-12 px-6 rounded-lg">
+          <h2 class="text-3xl font-bold mb-8 text-center">Our Mission</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl text-primary">🌱</span>
+              </div>
+              <h3 class="font-bold text-xl mb-2">Authenticity</h3>
+              <p class="text-muted-foreground">
+                We're committed to sharing authentic Indian recipes with detailed instructions that help you recreate the true flavors of India in your own kitchen.
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl text-primary">🌍</span>
+              </div>
+              <h3 class="font-bold text-xl mb-2">Cultural Appreciation</h3>
+              <p class="text-muted-foreground">
+                We believe food is a gateway to understanding culture. We share the stories and traditions behind each dish to foster appreciation for India's rich culinary heritage.
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl text-primary">🔍</span>
+              </div>
+              <h3 class="font-bold text-xl mb-2">Accessibility</h3>
+              <p class="text-muted-foreground">
+                We make Indian cooking accessible to everyone by breaking down complex techniques, explaining ingredients, and offering substitutions when possible.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- About Fara -->
+        <section class="mb-16">
+          <div class="bg-card shadow-md rounded-lg overflow-hidden">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=500&auto=format&fit=crop" alt="Fara cooking" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-8 md:w-2/3">
+                <h2 class="text-3xl font-bold mb-4">Meet Fara</h2>
+                <p class="mb-4">
+                  The heart and soul of Culinary Chronicles is my mother, Fara. Born and raised in India, she brings decades of cooking experience and a deep understanding of regional Indian cuisines to every recipe she creates.
+                </p>
+                <p class="mb-4">
+                  In early 2024, Fara decided to document her recipes and cooking techniques to preserve our family's culinary traditions. Her passion for sharing authentic Indian flavors quickly resonated with friends and family, inspiring the creation of this blog.
+                </p>
+                <p>
+                  Fara believes that cooking is an act of love and that food has the power to bring people together across cultures and generations. Through Culinary Chronicles, she hopes to inspire others to explore the rich tapestry of Indian cuisine and create memorable meals for their loved ones.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Join Us -->
+        <section class="text-center">
+          <h2 class="text-3xl font-bold mb-4">Join Our Culinary Journey</h2>
+          <p class="text-muted-foreground max-w-2xl mx-auto mb-6">
+            Whether you're a beginner cook or a seasoned chef, we invite you to be part of our community. Share your recipes, learn new techniques, and connect with fellow food enthusiasts.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="contact.html" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8">
+              Contact Us
+            </a>
+            <a href="recipes.html" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8">
+              Explore Recipes
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-muted py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-bold mb-4">Culinary Chronicles</h3>
+            <p class="text-muted-foreground mb-4">
+              Exploring flavors, sharing stories, and creating memories through Indian food.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-muted-foreground hover:text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <a href="#" class="text-muted-foreground hover:text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              </a>
+              <a href="#" class="text-muted-foreground hover:text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+              </a>
+              <a href="#" class="text-muted-foreground hover:text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">Explore</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="recipes.html" class="text-muted-foreground hover:text-primary">
+                  Recipes
+                </a>
+              </li>
+              <li>
+                <a href="blog.html" class="text-muted-foreground hover:text-primary">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="about.html" class="text-muted-foreground hover:text-primary">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="contact.html" class="text-muted-foreground hover:text-primary">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">Categories</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="recipes.html?category=north-indian" class="text-muted-foreground hover:text-primary">
+                  North Indian
+                </a>
+              </li>
+              <li>
+                <a href="recipes.html?category=south-indian" class="text-muted-foreground hover:text-primary">
+                  South Indian
+                </a>
+              </li>
+              <li>
+                <a href="recipes.html?category=desserts" class="text-muted-foreground hover:text-primary">
+                  Desserts
+                </a>
+              </li>
+              <li>
+                <a href="recipes.html?category=vegetarian" class="text-muted-foreground hover:text-primary">
+                  Vegetarian
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t mt-12 pt-6 text-center text-muted-foreground text-sm">
+          <p>© 2024 Culinary Chronicles. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Check for dark mode preference
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Toggle theme
+    themeToggle.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
